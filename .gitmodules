@@ -1,0 +1,3 @@
+[submodule "reactivex"]
+	path = reactivex
+	url = https://github.com/Neroware/GodotRx.git

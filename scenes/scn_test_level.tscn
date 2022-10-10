@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgcsadqtwfygt"]
+
+[ext_resource type="PackedScene" uid="uid://dtv7oqx00l5xt" path="res://scenes/features/player/scn_player.tscn" id="1_0xh04"]
+[ext_resource type="Texture2D" uid="uid://4puusekig7d1" path="res://assets/textures/placeholder/game_wide/tex_excl.png" id="2_ffsjn"]
+[ext_resource type="Script" path="res://scenes/features/enemies/src_enemy_spawner.gd" id="3_vfdxp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n57qr"]
+size = Vector2(20, 225)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vv7kw"]
+size = Vector2(361, 20)
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_0xh04")]
+process_priority = -1
+position = Vector2(60, 75)
+dash_energy = 0.5
+
+[node name="Arena" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Arena"]
+position = Vector2(-10, 112.5)
+shape = SubResource("RectangleShape2D_n57qr")
+
+[node name="CollisionShape2d2" type="CollisionShape2D" parent="Arena"]
+position = Vector2(330, 112)
+shape = SubResource("RectangleShape2D_n57qr")
+
+[node name="CollisionShape2d3" type="CollisionShape2D" parent="Arena"]
+position = Vector2(159.5, -10)
+shape = SubResource("RectangleShape2D_vv7kw")
+
+[node name="CollisionShape2d4" type="CollisionShape2D" parent="Arena"]
+position = Vector2(161, 235)
+shape = SubResource("RectangleShape2D_vv7kw")
+
+[node name="Spawner" type="Sprite2D" parent="." node_paths=PackedStringArray("root_node")]
+position = Vector2(259, -4)
+texture = ExtResource("2_ffsjn")
+script = ExtResource("3_vfdxp")
+root_node = NodePath("")
+
+[node name="Spawner2" type="Sprite2D" parent="." node_paths=PackedStringArray("root_node")]
+position = Vector2(324, 119)
+texture = ExtResource("2_ffsjn")
+script = ExtResource("3_vfdxp")
+root_node = NodePath("")
+
+[node name="Spawner3" type="Sprite2D" parent="." node_paths=PackedStringArray("root_node")]
+position = Vector2(193, 231)
+texture = ExtResource("2_ffsjn")
+script = ExtResource("3_vfdxp")
+root_node = NodePath("")

@@ -51,6 +51,7 @@ var _is_dead : bool = false
 
 func _init():
 	PlayerReady = GDRx.from_signal(self.player_ready)
+	Globals.current_player = self
 
 func _ready():
 	var player_manager : PlayerManager = PlayerManager.singleton()

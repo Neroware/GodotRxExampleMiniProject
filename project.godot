@@ -229,6 +229,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/features/player/src_player_manager.gd"
 }, {
+"base": "PlayerComponent",
+"class": &"PlayerSpriteBlurrEffect",
+"language": &"GDScript",
+"path": "res://scripts/features/player/visuals/src_player_sprite_blurr_effect.gd"
+}, {
 "base": "RefCounted",
 "class": &"PriorityQueue",
 "language": &"GDScript",
@@ -449,6 +454,7 @@ _global_script_class_icons={
 "PlayerComponent": "",
 "PlayerHoverboardMovement": "",
 "PlayerManager": "",
+"PlayerSpriteBlurrEffect": "",
 "PriorityQueue": "",
 "RLock": "",
 "ReactiveProperty": "",

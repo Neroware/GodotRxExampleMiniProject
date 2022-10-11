@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm5v2cl87j5jk"]
+[gd_scene load_steps=5 format=3 uid="uid://bm5v2cl87j5jk"]
 
+[ext_resource type="Script" path="res://scripts/features/player/src_player.gd" id="1_palmy"]
 [ext_resource type="PackedScene" uid="uid://cdvtgslqq2133" path="res://scenes/features/player/scn_player_sprites.tscn" id="2_fdwlp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acpuc"]
@@ -12,6 +13,9 @@ height = 14.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
+script = ExtResource("1_palmy")
+
+[node name="Life" type="Node" parent="."]
 
 [node name="CharacterSprites" parent="." instance=ExtResource("2_fdwlp")]
 

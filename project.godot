@@ -204,6 +204,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://reactivex/abc/periodicscheduler.gd"
 }, {
+"base": "CharacterBody2D",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://scripts/features/player/src_player.gd"
+}, {
+"base": "Node",
+"class": &"PlayerManager",
+"language": &"GDScript",
+"path": "res://scripts/features/player/src_player_manager.gd"
+}, {
 "base": "RefCounted",
 "class": &"PriorityQueue",
 "language": &"GDScript",
@@ -419,6 +429,8 @@ _global_script_class_icons={
 "OnNextNotification": "",
 "PeriodicScheduler": "",
 "PeriodicSchedulerBase": "",
+"Player": "",
+"PlayerManager": "",
 "PriorityQueue": "",
 "RLock": "",
 "ReactiveProperty": "",
@@ -459,6 +471,7 @@ _global_script_class_icons={
 [application]
 
 config/name="spacegirl"
+run/main_scene="res://scenes/scn_test_level.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 

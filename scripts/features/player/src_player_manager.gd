@@ -1,4 +1,3 @@
-extends Node
 class_name PlayerManager
 
 
@@ -12,6 +11,12 @@ func _ready():
 	self._player = null
 	self._player_properties = {}
 
+func get_player() -> Player:
+	return self._player
+
+var player : Player: 
+	get: return self.get_player()
+
 func reset():
 	for player_property in self._player_properties:
 		var ro_prop : ReadOnlyReactiveProperty = self._player_properties[player_property].at(1)
@@ -20,7 +25,7 @@ func reset():
 	self._player = null
 
 func update_player(player : Player):
-	reset()
+	self.reset()
 	
 	for player_property in player.PLAYER_PROPERTIES:
 		var prop = ReactiveProperty.FromMember(player, player_property)

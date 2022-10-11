@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm5v2cl87j5jk"]
+[gd_scene load_steps=7 format=3 uid="uid://bm5v2cl87j5jk"]
 
 [ext_resource type="Script" path="res://scripts/features/player/src_player.gd" id="1_palmy"]
 [ext_resource type="PackedScene" uid="uid://cdvtgslqq2133" path="res://scenes/features/player/scn_player_sprites.tscn" id="2_fdwlp"]
+[ext_resource type="Script" path="res://scripts/features/player/movement/src_hoverboard_movement.gd" id="2_pt001"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acpuc"]
 size = Vector2(20, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y67kl"]
-radius = 3.0
+radius = 2.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxfpn"]
+radius = 4.0
 height = 14.0
 
 [node name="Player" type="CharacterBody2D"]
@@ -16,6 +21,10 @@ collision_mask = 7
 script = ExtResource("1_palmy")
 
 [node name="Life" type="Node" parent="."]
+
+[node name="PlayerHoverboardMovement" type="Node" parent="." node_paths=PackedStringArray("player_node")]
+script = ExtResource("2_pt001")
+player_node = NodePath("..")
 
 [node name="CharacterSprites" parent="." instance=ExtResource("2_fdwlp")]
 
@@ -34,3 +43,11 @@ shape = SubResource("RectangleShape2D_acpuc")
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_y67kl")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -10)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_cxfpn")

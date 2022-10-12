@@ -4,6 +4,26 @@ class_name PlayerManager
 var _player_properties : Dictionary
 var _player : Player
 
+enum EAbilityState {
+	READY, ACTIVE, COOLDOWN
+}
+
+class PlayerAbilityStates:
+	var dash_state : ReactiveProperty 
+	var attack_state : ReactiveProperty
+	
+	func _init():
+		self.dash_state = ReactiveProperty.new(EAbilityState.READY)
+		self.attack_state = ReactiveProperty.new(EAbilityState.READY)
+	
+	func dispose():
+		self.dash_state.dispose()
+		self.attack_state.dispose()
+
+var _ability_states : PlayerAbilityStates
+var Abilities : PlayerAbilityStates:
+	get: return self._ability_states
+
 static func singleton() -> PlayerManager:
 	return Globals.PlayerManager_
 
@@ -23,6 +43,8 @@ func reset():
 		ro_prop.dispose()
 	self._player_properties.clear()
 	self._player = null
+	if self._ability_states != null:
+		self._ability_states.dispose()
 
 func update_player(player : Player):
 	self.reset()
@@ -34,6 +56,7 @@ func update_player(player : Player):
 			prop.to_readonly()
 		])
 	self._player = player
+	self._ability_states = PlayerAbilityStates.new()
 
 func get_property(player_property : String) -> ReadOnlyReactiveProperty:
 	if not player_property in self._player_properties:

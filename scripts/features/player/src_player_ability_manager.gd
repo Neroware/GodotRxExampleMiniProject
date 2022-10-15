@@ -5,7 +5,7 @@ enum EAbilityState {
 }
 
 const ABILITY_NAMES = [
-	"Dash"
+	"Dash", "SwordAttack"
 ]
 
 var _ability_states : Dictionary
@@ -50,3 +50,6 @@ func activate(ability : String, duration : float = -1.0, next_state : EAbilitySt
 
 var DashState : ReadOnlyReactiveProperty:
 	get: return self.get_state("Dash")
+
+var SwordAttackState : ReadOnlyReactiveProperty:
+	get: return self.get_state("SwordAttack")

@@ -24,4 +24,4 @@ func _init():
 		"Action0",
 		GDRx.on_physics_process_as_observable(root)) \
 		.filter(func(i): return i == 2) \
-		.map(func(__): return self.get_viewport().get_mouse_position())
+		.map(func(__): return Globals.get_viewport().get_mouse_position())

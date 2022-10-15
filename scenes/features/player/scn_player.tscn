@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm5v2cl87j5jk"]
+[gd_scene load_steps=9 format=3 uid="uid://cxs4wpu8tnu62"]
 
 [ext_resource type="Script" path="res://scripts/features/player/src_player.gd" id="1_palmy"]
 [ext_resource type="PackedScene" uid="uid://cdvtgslqq2133" path="res://scenes/features/player/scn_player_sprites.tscn" id="2_fdwlp"]
 [ext_resource type="Script" path="res://scripts/features/player/movement/src_hoverboard_movement.gd" id="2_pt001"]
-[ext_resource type="Script" path="res://scripts/features/player/movement/src_hoverboard_dash.gd" id="3_t082f"]
+[ext_resource type="Script" path="res://scripts/features/player/abilities/src_hoverboard_dash.gd" id="3_t082f"]
+[ext_resource type="Script" path="res://scripts/features/player/abilities/src_sword_attack.gd" id="4_6txa5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acpuc"]
 size = Vector2(20, 32)
@@ -24,12 +25,15 @@ script = ExtResource("1_palmy")
 [node name="Life" type="Node" parent="."]
 
 [node name="Movement" type="Node" parent="."]
-
-[node name="PlayerHoverboardMovement" type="Node" parent="Movement"]
 script = ExtResource("2_pt001")
 
-[node name="PlayerHoverboardDash" type="Node" parent="Movement"]
+[node name="Abilities" type="Node" parent="."]
+
+[node name="PlayerHoverboardDash" type="Node" parent="Abilities"]
 script = ExtResource("3_t082f")
+
+[node name="PlayerSwordAttack" type="Node" parent="Abilities"]
+script = ExtResource("4_6txa5")
 
 [node name="CharacterSprites" parent="." instance=ExtResource("2_fdwlp")]
 

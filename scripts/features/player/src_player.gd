@@ -34,7 +34,7 @@ const PLAYER_PROPERTIES = [
 
 # Attacking
 @export var attack_speed = 2.5 # in attacks per second
-@export var attack_chain_length : int = 2
+@export var attack_chain_length : int = 3
 @export var attack_cooldown : float = 0.4 # in seconds
 @export var attack_damage : int = 10
 @export var attack_chain_window : float = 1.0 # in seconds

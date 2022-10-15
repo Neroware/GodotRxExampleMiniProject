@@ -1,11 +1,13 @@
-[gd_scene load_steps=63 format=3 uid="uid://cdvtgslqq2133"]
+[gd_scene load_steps=65 format=3 uid="uid://cdvtgslqq2133"]
 
+[ext_resource type="Script" path="res://scripts/features/player/animation/src_hoverboard_sword_attack_animation_controller.gd" id="1_qhfmq"]
 [ext_resource type="Texture2D" uid="uid://c71iiw7env4bc" path="res://assets/textures/placeholder/player/board/tex_board.png" id="2_por7v"]
 [ext_resource type="Script" path="res://scripts/features/player/visuals/src_player_sprite_blurr_effect.gd" id="3_6vvbn"]
 [ext_resource type="Texture2D" uid="uid://cq7cnqkypfiqm" path="res://assets/textures/placeholder/player/space_girl/tex_space_girl.png" id="3_hhp34"]
 [ext_resource type="Texture2D" uid="uid://8jo61jaf1v86" path="res://assets/textures/placeholder/game_wide/tex_hit_1.png" id="3_xi0dq"]
 [ext_resource type="Texture2D" uid="uid://dn0d3wnesy0yu" path="res://assets/textures/placeholder/game_wide/tex_hit_2.png" id="4_pnf3p"]
 [ext_resource type="Texture2D" uid="uid://dgmorhodclv3j" path="res://assets/textures/placeholder/game_wide/tex_hit_3.png" id="5_j17xk"]
+[ext_resource type="Script" path="res://scripts/features/player/visuals/src_sword_attack_effect.gd" id="5_xkh5e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7alo"]
 atlas = ExtResource("2_por7v")
@@ -332,6 +334,7 @@ _data = {
 }
 
 [node name="CharacterSprites" type="Node2D"]
+script = ExtResource("1_qhfmq")
 
 [node name="HoverBoardSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -1)
@@ -350,6 +353,7 @@ sprite_paths = [NodePath("../HoverBoardSprite"), NodePath("../SpaceGirlSprite")]
 
 [node name="SwordAttackEffect" type="Node2D" parent="."]
 position = Vector2(0, -10)
+script = ExtResource("5_xkh5e")
 
 [node name="0" type="Sprite2D" parent="SwordAttackEffect"]
 visible = false

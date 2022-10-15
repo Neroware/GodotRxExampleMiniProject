@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxs4wpu8tnu62"]
+[gd_scene load_steps=10 format=3 uid="uid://cxs4wpu8tnu62"]
 
 [ext_resource type="Script" path="res://scripts/features/player/src_player.gd" id="1_palmy"]
+[ext_resource type="Script" path="res://scripts/features/life/src_life.gd" id="2_6yaue"]
 [ext_resource type="PackedScene" uid="uid://cdvtgslqq2133" path="res://scenes/features/player/scn_player_sprites.tscn" id="2_fdwlp"]
 [ext_resource type="Script" path="res://scripts/features/player/movement/src_hoverboard_movement.gd" id="2_pt001"]
 [ext_resource type="Script" path="res://scripts/features/player/abilities/src_hoverboard_dash.gd" id="3_t082f"]
@@ -23,6 +24,7 @@ collision_mask = 7
 script = ExtResource("1_palmy")
 
 [node name="Life" type="Node" parent="."]
+script = ExtResource("2_6yaue")
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("2_pt001")

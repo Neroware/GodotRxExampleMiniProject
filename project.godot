@@ -74,6 +74,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://reactivex/scheduler/currentthreadscheduler.gd"
 }, {
+"base": "Node",
+"class": &"DamageCause",
+"language": &"GDScript",
+"path": "res://scripts/features/life/src_damage_cause.gd"
+}, {
+"base": "Node",
+"class": &"DamageEffect",
+"language": &"GDScript",
+"path": "res://scripts/features/life/src_damage_effect.gd"
+}, {
 "base": "DisposableBase",
 "class": &"Disposable",
 "language": &"GDScript",
@@ -133,6 +143,11 @@ _global_script_classes=[{
 "class": &"Iterator",
 "language": &"GDScript",
 "path": "res://reactivex/internal/iterator.gd"
+}, {
+"base": "Node",
+"class": &"Life",
+"language": &"GDScript",
+"path": "res://scripts/features/life/src_life.gd"
 }, {
 "base": "LockBase",
 "class": &"Lock",
@@ -329,6 +344,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://reactivex/abc/scheduler.gd"
 }, {
+"base": "Node",
+"class": &"SensorBase",
+"language": &"GDScript",
+"path": "res://scripts/features/sensor/src_sensor.gd"
+}, {
 "base": "DisposableBase",
 "class": &"SerialDisposable",
 "language": &"GDScript",
@@ -453,6 +473,8 @@ _global_script_class_icons={
 "ConditionalVariable": "",
 "ConnectableObservable": "",
 "CurrentThreadScheduler": "",
+"DamageCause": "",
+"DamageEffect": "",
 "Disposable": "",
 "DisposableBase": "",
 "EventLoopScheduler": "",
@@ -465,6 +487,7 @@ _global_script_class_icons={
 "InputActionManager": "",
 "IterableBase": "",
 "Iterator": "",
+"Life": "",
 "Lock": "",
 "LockBase": "",
 "MultipleAssignmentDisposable": "",
@@ -504,6 +527,7 @@ _global_script_class_icons={
 "ScheduledObserver": "",
 "Scheduler": "",
 "SchedulerBase": "",
+"SensorBase": "",
 "SerialDisposable": "",
 "SingleAssignmentDisposable": "",
 "Spawner": "",

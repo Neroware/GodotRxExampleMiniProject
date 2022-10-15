@@ -1,13 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgcsadqtwfygt"]
+[gd_scene load_steps=9 format=3 uid="uid://dgcsadqtwfygt"]
 
 [ext_resource type="PackedScene" uid="uid://cxs4wpu8tnu62" path="res://scenes/features/player/scn_player.tscn" id="1_0xh04"]
 [ext_resource type="Texture2D" uid="uid://4puusekig7d1" path="res://assets/textures/placeholder/game_wide/tex_excl.png" id="2_ffsjn"]
+[ext_resource type="PackedScene" uid="uid://bj5ta26fv2sxo" path="res://scenes/features/enemies/src_dummy_enemy.tscn" id="3_ig85y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n57qr"]
 size = Vector2(20, 225)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vv7kw"]
 size = Vector2(361, 20)
+
+[sub_resource type="Animation" id="Animation_f0qpm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(27, 26)]
+}
+
+[sub_resource type="Animation" id="Animation_wbmq0"]
+resource_name = "test"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(27, 26), Vector2(237, 15), Vector2(75, 159)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsbhj"]
+_data = {
+"RESET": SubResource("Animation_f0qpm"),
+"test": SubResource("Animation_wbmq0")
+}
 
 [node name="TestLevel" type="Node2D"]
 
@@ -44,3 +83,12 @@ texture = ExtResource("2_ffsjn")
 [node name="Spawner3" type="Sprite2D" parent="."]
 position = Vector2(193, 231)
 texture = ExtResource("2_ffsjn")
+
+[node name="DummyEnemy" parent="." instance=ExtResource("3_ig85y")]
+position = Vector2(27, 26)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DummyEnemy"]
+autoplay = "test"
+libraries = {
+"": SubResource("AnimationLibrary_vsbhj")
+}

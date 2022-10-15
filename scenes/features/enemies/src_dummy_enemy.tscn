@@ -1,0 +1,116 @@
+[gd_scene load_steps=23 format=3 uid="uid://bj5ta26fv2sxo"]
+
+[ext_resource type="Shader" path="res://assets/shader/vfx_background_texture.gdshader" id="2_vneyl"]
+[ext_resource type="Texture2D" uid="uid://8ypigoddwrgl" path="res://assets/textures/placeholder/enemies/0-eye/tex_enemy_eye.png" id="3_6of3k"]
+[ext_resource type="Texture2D" uid="uid://bntv1nnvhb55o" path="res://assets/textures/placeholder/enemies/0-eye/tex_enemy_eye_dummy.png" id="3_mfqmd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qfp41"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekg1d"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuirh"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygrtj"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbsru"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqxam"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a8r3"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elv4p"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n88g"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5huqk"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha1ca"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wr5y"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l1dl"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpmi8"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aqha"]
+atlas = ExtResource("3_mfqmd")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_87ao7"]
+animations = [{
+"frames": [SubResource("AtlasTexture_ekg1d"), SubResource("AtlasTexture_vuirh"), SubResource("AtlasTexture_ygrtj"), SubResource("AtlasTexture_pbsru"), SubResource("AtlasTexture_bqxam"), SubResource("AtlasTexture_4a8r3"), SubResource("AtlasTexture_elv4p"), SubResource("AtlasTexture_5n88g"), SubResource("AtlasTexture_5huqk"), SubResource("AtlasTexture_ha1ca"), SubResource("AtlasTexture_8wr5y"), SubResource("AtlasTexture_4l1dl"), SubResource("AtlasTexture_tpmi8"), SubResource("AtlasTexture_3aqha")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_brxm5"]
+load_path = "res://.godot/imported/tex_space1.png-afe44f9b0cf3dd0e9a8d87164ee91b03.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lda4d"]
+shader = ExtResource("2_vneyl")
+shader_parameter/background_texture = SubResource("CompressedTexture2D_brxm5")
+shader_parameter/mix_color = null
+shader_parameter/mix_value = 0.5
+shader_parameter/replaced_color = Color(1, 0, 1, 1)
+shader_parameter/thresh = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2xyt"]
+size = Vector2(8, 8)
+
+[node name="DummyEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+
+[node name="DummyAI" type="Node" parent="."]
+
+[node name="Life" type="Node" parent="."]
+
+[node name="DamageEffects" type="Node" parent="."]
+
+[node name="DamageArea" type="Node2D" parent="."]
+
+[node name="Sensor" type="Area2D" parent="DamageArea"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="DamageArea/Sensor"]
+shape = SubResource("CircleShape2D_qfp41")
+
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
+visible = false
+frames = SubResource("SpriteFrames_87ao7")
+playing = true
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lda4d")
+texture = ExtResource("3_6of3k")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q2xyt")

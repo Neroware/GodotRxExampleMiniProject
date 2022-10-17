@@ -24,6 +24,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://reactivex/subject/asyncsubject.gd"
 }, {
+"base": "DamageCause",
+"class": &"AttackArea",
+"language": &"GDScript",
+"path": "res://scripts/features/life/damage_cause/src_attack_area.gd"
+}, {
 "base": "ObserverBase",
 "class": &"AutoDetachObserver",
 "language": &"GDScript",
@@ -38,6 +43,11 @@ _global_script_classes=[{
 "class": &"BehaviorSubject",
 "language": &"GDScript",
 "path": "res://reactivex/subject/behaviorsubject.gd"
+}, {
+"base": "SensorBase",
+"class": &"BodyEnteredSensor",
+"language": &"GDScript",
+"path": "res://scripts/features/sensor/src_body_entered_sensor.gd"
 }, {
 "base": "DisposableBase",
 "class": &"BooleanDisposable",
@@ -463,9 +473,11 @@ _global_script_class_icons={
 "ArrayIterator": "",
 "ArraySet": "",
 "AsyncSubject": "",
+"AttackArea": "",
 "AutoDetachObserver": "",
 "AutoDisposer": "",
 "BehaviorSubject": "",
+"BodyEnteredSensor": "",
 "BooleanDisposable": "",
 "CatchScheduler": "",
 "Comparable": "",

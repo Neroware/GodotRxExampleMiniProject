@@ -14,14 +14,16 @@ func _on_player_ready():
 		.do_after_next(
 			func(tup : Tuple):
 				var dt : float = tup.at(1)
-				if self._chain.Value < player.attack_chain_length:
+				if self._chain.Value < player.attack_chain_length - 1:
 					self._chain.Value += 1
-					if self._chain.Value == 0 or dt > player.attack_chain_window:
-						self._chain.Value = 1
 					player_manager.Abilities.activate("SwordAttack", 1.0 / player.attack_speed, _R_)
+					GDRx.start_timer(player.attack_chain_window, GDRx.timeout.Inherit) \
+						.take_until(self._chain.skip(1)) \
+						.subscribe(func(__): self._chain.Value = 0)
 				else:
 					self._chain.Value = 0
-					player_manager.Abilities.start_cooldown("SwordAttack", player.attack_cooldown)
+					player_manager.Abilities.activate_with_cooldown(
+						"SwordAttack", 1.0 / player.attack_speed, player.attack_cooldown)
 				) \
 		.subscribe(func(tup : Tuple): self.on_attack(tup.at(0))) \
 		.dispose_with(self)
@@ -37,9 +39,9 @@ func on_attack(v : Vector2):
 	
 	var angle = Vector2(0, -1).angle_to(d)
 	
-	#var damage_area : DamageArea = player.damage_area
-	#damage_area.rotation = angle
-	#damage_area.enabled = true
-	#GDRx.start_timer(1.0 / player.attack_speed) \
-	#	.subscribe(func(__): damage_area.enabled = false) \
-	#	.dispose_with(self)
+	var sword_attack_area : AttackArea = player.sword_attack_area
+	sword_attack_area.rotation = angle
+	sword_attack_area.set_enabled(true)
+	GDRx.start_timer(1.0 / player.attack_speed, GDRx.timeout.Inherit) \
+		.subscribe(func(__): sword_attack_area.set_enabled(false)) \
+		.dispose_with(self)

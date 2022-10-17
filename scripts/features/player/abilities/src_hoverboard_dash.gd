@@ -14,14 +14,16 @@ func _on_player_ready():
 		.do_after_next(
 			func(tup : Tuple):
 				var dt : float = tup.at(1)
-				if self._chain.Value < player.dash_chain_length:
+				if self._chain.Value < player.dash_chain_length - 1:
 					self._chain.Value += 1
-					if self._chain.Value == 0 or dt > player.dash_chain_window:
-						self._chain.Value = 1
 					player_manager.Abilities.activate("Dash", player.dash_duration, _R_)
+					GDRx.start_timer(player.dash_chain_window, GDRx.timeout.Inherit) \
+						.take_until(self._chain.skip(1)) \
+						.subscribe(func(__): self._chain.Value = 0)
 				else:
 					self._chain.Value = 0
-					player_manager.Abilities.start_cooldown("Dash", player.dash_cooldown)
+					player_manager.Abilities.activate_with_cooldown(
+						"Dash", player.dash_duration, player.dash_cooldown)
 				) \
 		.subscribe(func(__): self.on_dash()) \
 		.dispose_with(self)

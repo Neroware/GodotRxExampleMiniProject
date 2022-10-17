@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxs4wpu8tnu62"]
+[gd_scene load_steps=12 format=3 uid="uid://crxc34s4ykkul"]
 
 [ext_resource type="Script" path="res://scripts/features/player/src_player.gd" id="1_palmy"]
 [ext_resource type="Script" path="res://scripts/features/life/src_life.gd" id="2_6yaue"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/features/player/movement/src_hoverboard_movement.gd" id="2_pt001"]
 [ext_resource type="Script" path="res://scripts/features/player/abilities/src_hoverboard_dash.gd" id="3_t082f"]
 [ext_resource type="Script" path="res://scripts/features/player/abilities/src_sword_attack.gd" id="4_6txa5"]
+[ext_resource type="Script" path="res://scripts/features/life/damage_cause/src_attack_area.gd" id="7_e6wq1"]
+[ext_resource type="Script" path="res://scripts/features/sensor/src_body_entered_sensor.gd" id="7_ppsw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acpuc"]
 size = Vector2(20, 32)
@@ -39,26 +41,30 @@ script = ExtResource("4_6txa5")
 
 [node name="CharacterSprites" parent="." instance=ExtResource("2_fdwlp")]
 
-[node name="DamageArea" type="Node2D" parent="."]
-visible = false
+[node name="SwordAttackArea" type="Node2D" parent="." node_paths=PackedStringArray("sensor_node")]
 position = Vector2(0, -10)
+script = ExtResource("7_e6wq1")
+sensor_node = NodePath("Sensor")
 
-[node name="Sensor" type="Area2D" parent="DamageArea"]
+[node name="Sensor" type="Area2D" parent="SwordAttackArea"]
 position = Vector2(0, 16)
 collision_layer = 0
 collision_mask = 4
+script = ExtResource("7_ppsw7")
+detect_once = true
 
-[node name="CollisionShape2d" type="CollisionShape2D" parent="DamageArea/Sensor"]
+[node name="CollisionShape2d" type="CollisionShape2D" parent="SwordAttackArea/Sensor"]
 shape = SubResource("RectangleShape2D_acpuc")
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_y67kl")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="$$Hitbox$$Depricated$$" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -10)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2d" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2d" type="CollisionShape2D" parent="$$Hitbox$$Depricated$$"]
 shape = SubResource("CapsuleShape2D_cxfpn")

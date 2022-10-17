@@ -27,7 +27,7 @@ const PLAYER_PROPERTIES = [
 
 # Dash
 @export var dash_energy : float = 2.5
-@export var dash_chain_length : int = 2
+@export var dash_chain_length : int = 3
 @export var dash_cooldown : float = 3.0 # in seconds
 @export var dash_duration : float = 0.2 # in seconds
 @export var dash_chain_window : float = 1.0 # in seconds
@@ -45,7 +45,7 @@ const PLAYER_PROPERTIES = [
 ## Character Sprites
 @onready var sprites = $CharacterSprites
 ## Damage Area
-@onready var damage_area = $DamageArea
+@onready var sword_attack_area : AttackArea = $SwordAttackArea
 
 var _is_dead : bool = false
 

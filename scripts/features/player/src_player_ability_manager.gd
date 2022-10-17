@@ -44,6 +44,14 @@ func activate(ability : String, duration : float = -1.0, next_state : EAbilitySt
 			.subscribe(func(__): prop.Value = next_state) \
 			.dispose_with(self)
 
+func activate_with_cooldown(ability : String, active_duration : float = 0.0, cooldown_duration : float = 0.0):
+	self.update_state(ability, EAbilityState.Active)
+	var prop : ReactiveProperty = self._ability_states[ability].at(0)
+	GDRx.start_timer(active_duration, GDRx.timeout.Inherit) \
+		.take_until(prop.skip(1)) \
+		.subscribe(func(__): self.start_cooldown(ability, cooldown_duration)) \
+		.dispose_with(self)
+
 # =========================================================================== #
 #   Quick Access
 # =========================================================================== #

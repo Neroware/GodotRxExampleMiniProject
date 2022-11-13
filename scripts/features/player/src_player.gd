@@ -57,5 +57,16 @@ func _ready():
 	var player_manager : PlayerManager = PlayerManager.singleton()
 	player_manager.update_player(self)
 	
+	sword_attack_area.damage = self.attack_damage
+	
+	life.Defeated.subscribe(func(__): self._on_death()).dispose_with(self)
+	
 	# Done! Notify other components that player is ready.
 	player_ready.emit()
+
+func _on_death():
+	if not self._is_dead:
+		var player_manager = PlayerManager.singleton()
+		player_manager.free_player()
+		self._is_dead = true
+		player_manager.respawn(get_parent())

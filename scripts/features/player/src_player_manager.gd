@@ -15,6 +15,22 @@ func _ready():
 	self._player = null
 	self._player_properties = {}
 
+## Important! If this is not called before freeing the current [Player]
+## things get ugly!
+func free_player():
+	self._player.queue_free()
+	self._player = null
+
+func respawn(level_node : Node, dt : float = 1.0):
+	GDRx.start_timer(dt).subscribe(
+		func(__):
+			var player_scene : PackedScene = load("res://scenes/features/player/scn_player.tscn")
+			var new_player = player_scene.instantiate()
+			new_player.name = "Player"
+			new_player.position = Vector2(60, 60)
+			level_node.call_deferred("add_child", new_player)
+	)
+
 func get_player() -> Player:
 	return self._player
 

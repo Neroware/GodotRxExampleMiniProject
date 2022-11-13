@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cbce0xq8x3fn2"]
+
+[ext_resource type="Shader" path="res://assets/shader/vfx_background_texture.gdshader" id="1_emebq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_brxm5"]
+load_path = "res://.godot/imported/tex_space1.png-afe44f9b0cf3dd0e9a8d87164ee91b03.s3tc.ctex"
+
+[resource]
+shader = ExtResource("1_emebq")
+shader_parameter/background_texture = SubResource("CompressedTexture2D_brxm5")
+shader_parameter/mix_color = null
+shader_parameter/mix_value = 0.5
+shader_parameter/replaced_color = Color(1, 0, 1, 1)
+shader_parameter/thresh = 0.1

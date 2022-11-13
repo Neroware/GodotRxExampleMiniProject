@@ -1,16 +1,17 @@
-[gd_scene load_steps=31 format=3 uid="uid://bj5ta26fv2sxo"]
+[gd_scene load_steps=31 format=3 uid="uid://dt64pg3iqhd3"]
 
 [ext_resource type="Script" path="res://scripts/features/enemy/src_enemy.gd" id="1_jivx5"]
 [ext_resource type="Script" path="res://scripts/features/life/src_life.gd" id="1_xpyrr"]
 [ext_resource type="Script" path="res://scripts/features/enemy/src_dummy_enemy.gd" id="2_bjj7l"]
 [ext_resource type="Script" path="res://scripts/features/life/damage_effect/src_recoil.gd" id="2_t462h"]
-[ext_resource type="Shader" path="res://assets/shader/vfx_background_texture.gdshader" id="2_vneyl"]
-[ext_resource type="Texture2D" uid="uid://8ypigoddwrgl" path="res://assets/textures/placeholder/enemies/0-eye/tex_enemy_eye.png" id="3_6of3k"]
 [ext_resource type="Script" path="res://scripts/features/life/damage_effect/src_on_hit_highlight.gd" id="3_bjpv5"]
 [ext_resource type="Texture2D" uid="uid://bntv1nnvhb55o" path="res://assets/textures/placeholder/enemies/0-eye/tex_enemy_eye_dummy.png" id="3_mfqmd"]
 [ext_resource type="Script" path="res://scripts/features/life/damage_cause/src_attack_area.gd" id="4_b5nvp"]
 [ext_resource type="Script" path="res://scripts/features/life/src_damage_effect.gd" id="4_mjx1m"]
 [ext_resource type="Script" path="res://scripts/features/sensor/src_body_entered_sensor.gd" id="5_lse1r"]
+[ext_resource type="Material" uid="uid://cbce0xq8x3fn2" path="res://assets/materials/mat_enemy_effect.tres" id="10_mh0qi"]
+[ext_resource type="Texture2D" uid="uid://8ypigoddwrgl" path="res://assets/textures/placeholder/enemies/0-eye/tex_enemy_eye0.png" id="11_qo30o"]
+[ext_resource type="Texture2D" uid="uid://bmxrujdg2pyga" path="res://assets/textures/placeholder/enemies/0-eye/tex_enemy_eye1.png" id="12_ld76p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qfp41"]
 
@@ -78,16 +79,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_brxm5"]
-load_path = "res://.godot/imported/tex_space1.png-afe44f9b0cf3dd0e9a8d87164ee91b03.s3tc.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lda4d"]
-shader = ExtResource("2_vneyl")
-shader_parameter/background_texture = SubResource("CompressedTexture2D_brxm5")
-shader_parameter/mix_color = null
-shader_parameter/mix_value = 0.5
-shader_parameter/replaced_color = Color(1, 0, 1, 1)
-shader_parameter/thresh = 0.1
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ue2n"]
+animations = [{
+"frames": [ExtResource("11_qo30o"), ExtResource("12_ld76p")],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2xyt"]
 size = Vector2(8, 8)
@@ -119,7 +117,7 @@ script = ExtResource("2_t462h")
 [node name="SpriteOnHitHighlightDamageEffect" type="Node" parent="DamageEffects"]
 script = ExtResource("3_bjpv5")
 sprite_paths = [NodePath("../../Sprite2d"), NodePath("../../AnimatedSprite2d")]
-highlight_color = Color(0.239216, 0.027451, 0.654902, 1)
+highlight_color = Color(0.223529, 0.0862745, 0.654902, 1)
 life = NodePath("../../Life")
 
 [node name="DamageArea" type="Node2D" parent="." node_paths=PackedStringArray("sensor_node")]
@@ -142,9 +140,10 @@ visible = false
 frames = SubResource("SpriteFrames_87ao7")
 playing = true
 
-[node name="Sprite2d" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_lda4d")
-texture = ExtResource("3_6of3k")
+[node name="Sprite2d" type="AnimatedSprite2D" parent="."]
+material = ExtResource("10_mh0qi")
+frames = SubResource("SpriteFrames_8ue2n")
+playing = true
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q2xyt")

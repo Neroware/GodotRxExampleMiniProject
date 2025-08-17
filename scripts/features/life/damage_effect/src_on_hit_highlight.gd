@@ -27,7 +27,7 @@ func trigger(damage_cause : DamageCause):
 			sprite.modulate = Color(1, 1, 1)
 	
 	GDRx.on_process_as_observable(self) \
-		.take_until(GDRx.start_timer(duration, GDRx.timeout.Inherit)) \
+		.take_until(GDRx.start_timer(duration)) \
 		.take_until(self._life.Hp.skip(1)) \
 		.debounce(1.0 / highlight_frequency) \
 		.subscribe(

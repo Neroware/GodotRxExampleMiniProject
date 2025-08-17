@@ -3,7 +3,7 @@ class_name BodyEnteredSensor
 
 
 ## Area used to detect entering bodies
-@export var area : Area2D = $"."
+@export var area : Area2D
 ## If 'true', remebers lost detections, resets on deactivate
 @export var detect_once = false
 

@@ -1,8 +1,8 @@
 extends PlayerComponent
 class_name PlayerSpriteHoverboardSwordAttackAnimationController
 
-@export @onready var board_sprite : AnimatedSprite2D = $HoverBoardSprite
-@export @onready var space_girl_sprite : AnimatedSprite2D = $SpaceGirlSprite
+@onready var board_sprite : AnimatedSprite2D = $HoverBoardSprite
+@onready var space_girl_sprite : AnimatedSprite2D = $SpaceGirlSprite
 
 func _on_player_ready():
 	var _A_ = PlayerAbilityManager.EAbilityState.Active
@@ -32,4 +32,3 @@ func on_attack():
 			space_girl_sprite.play("attack_left")
 		else:
 			space_girl_sprite.play("attack_right")
-	space_girl_sprite.playing = true

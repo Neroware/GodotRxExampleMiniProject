@@ -29,7 +29,7 @@ func respawn(level_node : Node, dt : float = 1.0):
 			new_player.name = "Player"
 			new_player.position = Vector2(60, 60)
 			level_node.call_deferred("add_child", new_player)
-	)
+	).dispose_with(self)
 
 func get_player() -> Player:
 	return self._player

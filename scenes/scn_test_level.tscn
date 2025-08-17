@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://crxc34s4ykkul" path="res://scenes/features/player/scn_player.tscn" id="1_0xh04"]
 [ext_resource type="Texture2D" uid="uid://4puusekig7d1" path="res://assets/textures/placeholder/game_wide/tex_excl.png" id="2_ffsjn"]
-[ext_resource type="Script" path="res://scripts/features/enemy/src_enemy_spawner.gd" id="3_6asr4"]
+[ext_resource type="Script" uid="uid://b2obapgl1cl7n" path="res://scripts/features/enemy/src_enemy_spawner.gd" id="3_6asr4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n57qr"]
 size = Vector2(20, 225)

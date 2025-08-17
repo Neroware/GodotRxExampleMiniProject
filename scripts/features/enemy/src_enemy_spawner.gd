@@ -4,7 +4,7 @@ class_name Spawner
 @export var enabled : bool = true
 @export var spawned_scene : PackedScene = preload("res://scenes/features/enemies/scn_dummy_enemy.tscn")
 
-@export @onready var root_node : Node = $".."
+@export var root_node : Node
 
 var spawned_entity : Node = null
 

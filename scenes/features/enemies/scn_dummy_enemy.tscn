@@ -1,14 +1,14 @@
 [gd_scene load_steps=31 format=3 uid="uid://dt64pg3iqhd3"]
 
-[ext_resource type="Script" path="res://scripts/features/enemy/src_enemy.gd" id="1_jivx5"]
-[ext_resource type="Script" path="res://scripts/features/life/src_life.gd" id="1_xpyrr"]
-[ext_resource type="Script" path="res://scripts/features/enemy/src_dummy_enemy.gd" id="2_bjj7l"]
-[ext_resource type="Script" path="res://scripts/features/life/damage_effect/src_recoil.gd" id="2_t462h"]
-[ext_resource type="Script" path="res://scripts/features/life/damage_effect/src_on_hit_highlight.gd" id="3_bjpv5"]
+[ext_resource type="Script" uid="uid://hsv2w8rj3jsi" path="res://scripts/features/enemy/src_enemy.gd" id="1_jivx5"]
+[ext_resource type="Script" uid="uid://3jrhkye7dj50" path="res://scripts/features/life/src_life.gd" id="1_xpyrr"]
+[ext_resource type="Script" uid="uid://onmwbkovhqt4" path="res://scripts/features/enemy/src_dummy_enemy.gd" id="2_bjj7l"]
+[ext_resource type="Script" uid="uid://d3bwkcwsa5sep" path="res://scripts/features/life/damage_effect/src_recoil.gd" id="2_t462h"]
+[ext_resource type="Script" uid="uid://lr8ugeidtk37" path="res://scripts/features/life/damage_effect/src_on_hit_highlight.gd" id="3_bjpv5"]
 [ext_resource type="Texture2D" uid="uid://bntv1nnvhb55o" path="res://assets/textures/placeholder/enemies/0-eye/tex_enemy_eye_dummy.png" id="3_mfqmd"]
-[ext_resource type="Script" path="res://scripts/features/life/damage_cause/src_attack_area.gd" id="4_b5nvp"]
-[ext_resource type="Script" path="res://scripts/features/life/src_damage_effect.gd" id="4_mjx1m"]
-[ext_resource type="Script" path="res://scripts/features/sensor/src_body_entered_sensor.gd" id="5_lse1r"]
+[ext_resource type="Script" uid="uid://i1dr75ws0q73" path="res://scripts/features/life/damage_cause/src_attack_area.gd" id="4_b5nvp"]
+[ext_resource type="Script" uid="uid://bidpv6noiehp1" path="res://scripts/features/life/src_damage_effect.gd" id="4_mjx1m"]
+[ext_resource type="Script" uid="uid://bq176xyx1c088" path="res://scripts/features/sensor/src_body_entered_sensor.gd" id="5_lse1r"]
 [ext_resource type="Material" uid="uid://cbce0xq8x3fn2" path="res://assets/materials/mat_enemy_effect.tres" id="10_mh0qi"]
 [ext_resource type="Texture2D" uid="uid://8ypigoddwrgl" path="res://assets/textures/placeholder/enemies/0-eye/tex_enemy_eye0.png" id="11_qo30o"]
 [ext_resource type="Texture2D" uid="uid://bmxrujdg2pyga" path="res://assets/textures/placeholder/enemies/0-eye/tex_enemy_eye1.png" id="12_ld76p"]
@@ -73,7 +73,49 @@ region = Rect2(416, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_87ao7"]
 animations = [{
-"frames": [SubResource("AtlasTexture_ekg1d"), SubResource("AtlasTexture_vuirh"), SubResource("AtlasTexture_ygrtj"), SubResource("AtlasTexture_pbsru"), SubResource("AtlasTexture_bqxam"), SubResource("AtlasTexture_4a8r3"), SubResource("AtlasTexture_elv4p"), SubResource("AtlasTexture_5n88g"), SubResource("AtlasTexture_5huqk"), SubResource("AtlasTexture_ha1ca"), SubResource("AtlasTexture_8wr5y"), SubResource("AtlasTexture_4l1dl"), SubResource("AtlasTexture_tpmi8"), SubResource("AtlasTexture_3aqha")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekg1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuirh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygrtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbsru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqxam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a8r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elv4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n88g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5huqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha1ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wr5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l1dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpmi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aqha")
+}],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -81,7 +123,13 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ue2n"]
 animations = [{
-"frames": [ExtResource("11_qo30o"), ExtResource("12_ld76p")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_qo30o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ld76p")
+}],
 "loop": true,
 "name": &"default",
 "speed": 15.0
@@ -96,10 +144,9 @@ collision_mask = 7
 script = ExtResource("1_jivx5")
 movement_speed = 60.0
 
-[node name="DummyAI" type="Node" parent="." node_paths=PackedStringArray("life", "enemy")]
+[node name="DummyAI" type="Node" parent="." node_paths=PackedStringArray("life")]
 script = ExtResource("2_bjj7l")
 life = NodePath("../Life")
-enemy = NodePath("..")
 
 [node name="Life" type="Node" parent="."]
 script = ExtResource("1_xpyrr")
@@ -116,9 +163,8 @@ script = ExtResource("2_t462h")
 
 [node name="SpriteOnHitHighlightDamageEffect" type="Node" parent="DamageEffects"]
 script = ExtResource("3_bjpv5")
-sprite_paths = [NodePath("../../Sprite2d"), NodePath("../../AnimatedSprite2d")]
+sprite_paths = Array[NodePath]([NodePath("../../Sprite2d"), NodePath("../../AnimatedSprite2d")])
 highlight_color = Color(0.223529, 0.0862745, 0.654902, 1)
-life = NodePath("../../Life")
 
 [node name="DamageArea" type="Node2D" parent="." node_paths=PackedStringArray("sensor_node")]
 script = ExtResource("4_b5nvp")
@@ -137,13 +183,11 @@ shape = SubResource("CircleShape2D_qfp41")
 
 [node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
 visible = false
-frames = SubResource("SpriteFrames_87ao7")
-playing = true
+sprite_frames = SubResource("SpriteFrames_87ao7")
 
 [node name="Sprite2d" type="AnimatedSprite2D" parent="."]
 material = ExtResource("10_mh0qi")
-frames = SubResource("SpriteFrames_8ue2n")
-playing = true
+sprite_frames = SubResource("SpriteFrames_8ue2n")
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q2xyt")

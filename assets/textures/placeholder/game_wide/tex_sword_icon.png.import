@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/tex_sword_icon.png-68cba021fdecb25dd872107a3e
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

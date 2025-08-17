@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/tex_terrain.png-2736afbc9b42f229004524a12f46f
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

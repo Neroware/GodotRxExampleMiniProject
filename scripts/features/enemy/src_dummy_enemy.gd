@@ -1,7 +1,7 @@
 extends EnemyComponent
 class_name DummyEnemy
 
-@export @onready var life = $"../Life"
+@export var life : Life
 
 func _on_enemy_ready():
 	var enemy = self._enemy
@@ -16,7 +16,7 @@ func _on_enemy_ready():
 	life.Defeated.subscribe(func(__): on_defeat()).dispose_with(self)
 	
 	self.life.Hp \
-		.skip(1) \
+		.pairwise() \
 		.filter(func(tup : Tuple): return tup.at(1) < tup.at(0)) \
 		.map(func(tup : Tuple): return tup.at(0) - tup.at(0)) \
 		.subscribe(on_hit) \
@@ -35,7 +35,7 @@ func on_move(enemy : Enemy, d : Vector2):
 	enemy.move_and_slide()
 
 func on_defeat():
-	enemy.queue_free()
+	self._enemy.queue_free()
 
 func on_hit(damage : int):
 	pass

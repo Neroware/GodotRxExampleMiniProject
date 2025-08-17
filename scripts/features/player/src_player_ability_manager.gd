@@ -30,7 +30,7 @@ func dispose():
 func start_cooldown(ability : String, duration : float):
 	var prop : ReactiveProperty = self._ability_states[ability].at(0)
 	prop.Value = EAbilityState.Cooldown
-	GDRx.start_timer(duration, GDRx.timeout.Inherit) \
+	GDRx.start_timer(duration) \
 		.take_until(prop.skip(1)) \
 		.subscribe(func(__): prop.Value = EAbilityState.Ready) \
 		.dispose_with(self)
@@ -39,7 +39,7 @@ func activate(ability : String, duration : float = -1.0, next_state : EAbilitySt
 	self.update_state(ability, EAbilityState.Active)
 	if duration >= 0.0:
 		var prop : ReactiveProperty = self._ability_states[ability].at(0)
-		GDRx.start_timer(duration, GDRx.timeout.Inherit) \
+		GDRx.start_timer(duration) \
 			.take_until(prop.skip(1)) \
 			.subscribe(func(__): prop.Value = next_state) \
 			.dispose_with(self)
@@ -47,7 +47,7 @@ func activate(ability : String, duration : float = -1.0, next_state : EAbilitySt
 func activate_with_cooldown(ability : String, active_duration : float = 0.0, cooldown_duration : float = 0.0):
 	self.update_state(ability, EAbilityState.Active)
 	var prop : ReactiveProperty = self._ability_states[ability].at(0)
-	GDRx.start_timer(active_duration, GDRx.timeout.Inherit) \
+	GDRx.start_timer(active_duration) \
 		.take_until(prop.skip(1)) \
 		.subscribe(func(__): self.start_cooldown(ability, cooldown_duration)) \
 		.dispose_with(self)

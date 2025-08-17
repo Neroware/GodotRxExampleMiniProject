@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://crxc34s4ykkul"]
 
-[ext_resource type="Script" path="res://scripts/features/player/src_player.gd" id="1_palmy"]
-[ext_resource type="Script" path="res://scripts/features/life/src_life.gd" id="2_6yaue"]
+[ext_resource type="Script" uid="uid://ek0lio40un6m" path="res://scripts/features/player/src_player.gd" id="1_palmy"]
+[ext_resource type="Script" uid="uid://3jrhkye7dj50" path="res://scripts/features/life/src_life.gd" id="2_6yaue"]
 [ext_resource type="PackedScene" uid="uid://cdvtgslqq2133" path="res://scenes/features/player/scn_player_sprites.tscn" id="2_fdwlp"]
-[ext_resource type="Script" path="res://scripts/features/player/movement/src_hoverboard_movement.gd" id="2_pt001"]
-[ext_resource type="Script" path="res://scripts/features/player/abilities/src_hoverboard_dash.gd" id="3_t082f"]
-[ext_resource type="Script" path="res://scripts/features/life/damage_effect/src_on_hit_highlight.gd" id="3_x6mll"]
-[ext_resource type="Script" path="res://scripts/features/player/abilities/src_sword_attack.gd" id="4_6txa5"]
-[ext_resource type="Script" path="res://scripts/features/life/damage_effect/src_invincibility_frames.gd" id="4_d5o6n"]
-[ext_resource type="Script" path="res://scripts/features/life/src_damage_effect.gd" id="5_5biws"]
-[ext_resource type="Script" path="res://scripts/features/life/damage_cause/src_attack_area.gd" id="7_e6wq1"]
-[ext_resource type="Script" path="res://scripts/features/sensor/src_body_entered_sensor.gd" id="7_ppsw7"]
+[ext_resource type="Script" uid="uid://dvrhbe0vfi8o5" path="res://scripts/features/player/movement/src_hoverboard_movement.gd" id="2_pt001"]
+[ext_resource type="Script" uid="uid://doggqv6sh6u7g" path="res://scripts/features/player/abilities/src_hoverboard_dash.gd" id="3_t082f"]
+[ext_resource type="Script" uid="uid://lr8ugeidtk37" path="res://scripts/features/life/damage_effect/src_on_hit_highlight.gd" id="3_x6mll"]
+[ext_resource type="Script" uid="uid://duupy0utm0l0f" path="res://scripts/features/player/abilities/src_sword_attack.gd" id="4_6txa5"]
+[ext_resource type="Script" uid="uid://uevo4od2kehx" path="res://scripts/features/life/damage_effect/src_invincibility_frames.gd" id="4_d5o6n"]
+[ext_resource type="Script" uid="uid://bidpv6noiehp1" path="res://scripts/features/life/src_damage_effect.gd" id="5_5biws"]
+[ext_resource type="Script" uid="uid://i1dr75ws0q73" path="res://scripts/features/life/damage_cause/src_attack_area.gd" id="7_e6wq1"]
+[ext_resource type="Script" uid="uid://bq176xyx1c088" path="res://scripts/features/sensor/src_body_entered_sensor.gd" id="7_ppsw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acpuc"]
 size = Vector2(20, 32)
@@ -39,7 +39,7 @@ script = ExtResource("5_5biws")
 
 [node name="SpriteOnHitHighlightDamageEffect" type="Node" parent="DamageEffects"]
 script = ExtResource("3_x6mll")
-sprite_paths = [NodePath("../../CharacterSprites")]
+sprite_paths = Array[NodePath]([NodePath("../../CharacterSprites")])
 highlight_color = Color(0.658824, 1, 0, 1)
 
 [node name="InvincibilityFramesDamageEffect" type="Node" parent="DamageEffects"]
@@ -65,11 +65,12 @@ position = Vector2(0, -10)
 script = ExtResource("7_e6wq1")
 sensor_node = NodePath("Sensor")
 
-[node name="Sensor" type="Area2D" parent="SwordAttackArea"]
+[node name="Sensor" type="Area2D" parent="SwordAttackArea" node_paths=PackedStringArray("area")]
 position = Vector2(0, 16)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("7_ppsw7")
+area = NodePath(".")
 detect_once = true
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="SwordAttackArea/Sensor"]

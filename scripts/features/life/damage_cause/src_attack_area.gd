@@ -1,7 +1,7 @@
 extends DamageCause
 class_name AttackArea
 
-@export @onready var sensor_node : Node
+@export var sensor_node : Node
 @export var enabled_on_start : bool = false
 
 @onready var _sensor : SensorBase = sensor_node as SensorBase

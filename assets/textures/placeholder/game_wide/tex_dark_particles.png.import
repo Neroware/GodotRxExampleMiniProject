@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/tex_dark_particles.png-944c41f8d5ee5c7e3a60b2
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

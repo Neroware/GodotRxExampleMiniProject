@@ -17,7 +17,7 @@ func _on_player_ready():
 				if self._chain.Value < player.dash_chain_length - 1:
 					self._chain.Value += 1
 					player_manager.Abilities.activate("Dash", player.dash_duration, _R_)
-					GDRx.start_timer(player.dash_chain_window, GDRx.timeout.Inherit) \
+					GDRx.start_timer(player.dash_chain_window) \
 						.take_until(self._chain.skip(1)) \
 						.subscribe(func(__): self._chain.Value = 0)
 				else:

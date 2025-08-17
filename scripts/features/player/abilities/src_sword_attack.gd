@@ -17,7 +17,7 @@ func _on_player_ready():
 				if self._chain.Value < player.attack_chain_length - 1:
 					self._chain.Value += 1
 					player_manager.Abilities.activate("SwordAttack", 1.0 / player.attack_speed, _R_)
-					GDRx.start_timer(player.attack_chain_window, GDRx.timeout.Inherit) \
+					GDRx.start_timer(player.attack_chain_window) \
 						.take_until(self._chain.skip(1)) \
 						.subscribe(func(__): self._chain.Value = 0)
 				else:
@@ -42,6 +42,6 @@ func on_attack(v : Vector2):
 	var sword_attack_area : AttackArea = player.sword_attack_area
 	sword_attack_area.rotation = angle
 	sword_attack_area.set_enabled(true)
-	GDRx.start_timer(1.0 / player.attack_speed, GDRx.timeout.Inherit) \
+	GDRx.start_timer(1.0 / player.attack_speed) \
 		.subscribe(func(__): sword_attack_area.set_enabled(false)) \
 		.dispose_with(self)

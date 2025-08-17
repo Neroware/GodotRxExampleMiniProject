@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/tex_konrad_body.png-7191dd1e7b2ee31dd23d02fa5
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

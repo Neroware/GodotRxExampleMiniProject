@@ -8,6 +8,7 @@ func _on_player_ready():
 	var _A_ = PlayerAbilityManager.EAbilityState.Active
 	
 	board_sprite.play("default")
+	space_girl_sprite.play("default")
 	player_manager.Abilities.SwordAttackState \
 		.filter(func(value): return value == _A_) \
 		.subscribe(func(__): on_attack()) \
